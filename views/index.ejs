@@ -17,7 +17,7 @@
         data: JSON.stringify(data),
         contentType: 'application/json',
         success: function(resData) {
-          alert('Stream added: '+JSON.stringify(resData));
+          location.reload();
         },
         error: function(error) {
           alert('Failed: '+error);

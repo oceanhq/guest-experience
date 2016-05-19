@@ -28,7 +28,7 @@ router.post('/create-stream', function(req, res, next) {
 
   Streams.CreateStream(req.body.name)
   .then(function(stream) {
-    res.send({ status: 'ok' });
+    res.send({result: "ok"});
   });
 });
 
