@@ -3,9 +3,55 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src='/javascripts/jquery-1.12.3.min.js'></script>
+    <script>
+    function createStream() {
+      var field = $('#stream-name');
+      var name = field.val();
+
+      var data = { name: name };
+
+      $.post({
+
+        url: "create-stream",
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function(resData) {
+          alert('Stream added: '+JSON.stringify(resData));
+        },
+        error: function(error) {
+          alert('Failed: '+error);
+        }
+      });
+
+      field.val('');
+      return;
+    }
+    </script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <p>
+      <input type="text" placeholder="Stream name" id="stream-name" />
+      <button onclick="javascript:createStream(); return false;">Create Stream</button>
+    </p>
+
+    <% if(streams.length == 0) { %>
+      <p><em>No streams yet...</em></p>
+    <% } else { %>
+      <table>
+        <tr>
+          <th>Stream Name</th>
+        </tr>
+
+        <% for(var i=0; i<streams.length; i++) {%>
+        <tr>
+          <td><%= streams[i].name %></td>
+        </tr>
+        <% } %>
+      </table>
+    <% } %>
   </body>
 </html>
