@@ -1,3 +1,5 @@
+'use strict'
+
 function postCreateStream(streamName, cbSuccess, cbFailure) {
   var data = { name: streamName };
 
