@@ -18,6 +18,9 @@ router.post('/streams/create', function(req, res, next) {
   Streams.CreateStream(req.body.name)
   .then(function(stream) {
     res.send({result: "ok"});
+  })
+  .catch(function(err) {
+    res.send({result: "error", error: err});
   });
 });
 

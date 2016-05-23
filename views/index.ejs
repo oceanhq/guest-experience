@@ -37,7 +37,7 @@
 
         <% for(var i=0; i<streams.length; i++) {%>
         <tr>
-          <td><%= streams[i].name %></td>
+          <td><a href="/streams/<%= streams[i].streamId %>"><%= streams[i].name %></a></td>
         </tr>
         <% } %>
       </table>
