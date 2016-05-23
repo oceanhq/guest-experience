@@ -2,7 +2,7 @@ var express = require('express');
 var Streams = require('../lib/streams.js');
 var router = express.Router();
 
-router.post('/create-stream', function(req, res, next) {
+router.post('/streams/create', function(req, res, next) {
   if(!req.is('application/json')) {
     res.status(400).send({ status: 'fail', error: 'Request must be JSON'});
     return;

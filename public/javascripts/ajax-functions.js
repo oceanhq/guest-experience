@@ -3,7 +3,7 @@ function postCreateStream(streamName, cbSuccess, cbFailure) {
 
   $.post({
 
-    url: "api/create-stream",
+    url: "api/streams/create",
     data: JSON.stringify(data),
     contentType: 'application/json',
     success: function(resData) {
