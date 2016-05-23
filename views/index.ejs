@@ -4,28 +4,17 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src='/javascripts/jquery-1.12.3.min.js'></script>
+    <script src='/javascripts/ajax-functions.js'></script>
     <script>
     function createStream() {
-      var field = $('#stream-name');
+      var field = $('._streamName');
       var name = field.val();
 
-      var data = { name: name };
-
-      $.post({
-
-        url: "api/create-stream",
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        success: function(resData) {
-          location.reload();
-        },
-        error: function(error) {
-          alert('Failed: '+JSON.stringify(error));
-        }
+      postCreateStream(field.val(), function(result) {
+        location.reload();
+      }, function(error) {
+        alert('Failed: '+JSON.stringify(error));
       });
-
-      field.val('');
-      return;
     }
     </script>
   </head>
@@ -34,7 +23,7 @@
     <p>Welcome to <%= title %></p>
 
     <p>
-      <input type="text" placeholder="Stream name" id="stream-name" />
+      <input type="text" placeholder="Stream name" class="_streamName" />
       <button onclick="javascript:createStream(); return false;">Create Stream</button>
     </p>
 
