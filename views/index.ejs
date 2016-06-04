@@ -1,46 +1,74 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Ocean</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src='/javascripts/jquery-1.12.3.min.js'></script>
-    <script src='/javascripts/ajax-functions.js'></script>
-    <script>
-    function createStream() {
-      var field = $('._streamName');
-      var name = field.val();
-
-      postCreateStream(field.val(), function(result) {
-        location.reload();
-      }, function(error) {
-        alert('Failed: '+JSON.stringify(error));
-      });
-    }
-    </script>
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+      crossorigin="anonymous" />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+      integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+      crossorigin="anonymous"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Ocean</a>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Sign up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <p>
-      <input type="text" placeholder="Stream name" class="_streamName" />
-      <button onclick="javascript:createStream(); return false;">Create Stream</button>
-    </p>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Ocean.</h1>
+        <p>Ocean helps your digital creations communicate. We provide lightweight,
+          dead-easy, instant message queues to safely, reliably, and instantly ferry
+          information between your devices and web apps.</p>
+        <p><a href="#">See some examples of how Ocean helps web apps and devices
+          communicate.</a></p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>If the Internet of Things were a massive, living organism - made up of an
+            ever-changing set of tiny components with no central governance - Ocean
+            would be the circulatory system pumping data between every component.</p>
+          <h2>What are you trying to do today?</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Connect physical devices</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Connect web applications</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Connect a physical device to a web application</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+    </div>
 
-    <% if(streams.length == 0) { %>
-      <p><em>No streams yet...</em></p>
-    <% } else { %>
-      <table>
-        <tr>
-          <th>Stream Name</th>
-        </tr>
-
-        <% for(var i=0; i<streams.length; i++) {%>
-        <tr>
-          <td><a href="/streams/<%= streams[i].streamId %>"><%= streams[i].name %></a></td>
-        </tr>
-        <% } %>
-      </table>
-    <% } %>
   </body>
 </html>
