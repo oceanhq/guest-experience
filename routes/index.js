@@ -45,7 +45,7 @@ router.get('/callback', function(req, res) {
       var token = respVals.access_token;
 
       // Store auth token in client's secure cookies.
-      res.cookie("githubToken", token);
+      res.cookie("githubToken", token, { httpOnly: true });
 
       res.redirect(302, '/get-started?step=2');
     } else if (error) {
