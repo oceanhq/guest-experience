@@ -23,7 +23,7 @@ router.get('/get-started', function(req, res) {
     step = req.query.step;
   }
 
-  res.render('get-started', { step: step });
+  res.render('get-started', { step: step, githubClientID: githubClientID });
 });
 
 router.get('/callback', function(req, res) {
