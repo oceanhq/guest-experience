@@ -24,23 +24,18 @@ router.get('/get-started', function(req, res) {
 
 router.get('/callback', function(req, res) {
   var ghCode = req.query.code;
-  console.log("Received callback with code:", ghCode);
 
   github.exchangeAuthCodeForToken(ghCode)
     .then(function(token){
-      console.log("Exchanged code for token:", token);
       return github.lookupGithubUserID(token)
     }, logError)
     .then(function(ghID) {
-      console.log("Looked up github ID:", ghID);
       return identities.exchangeThirdPartyIdentity(identities.THIRD_PARTIES.GITHUB, ghID);
     })
     .then(function(oceanID) {
-      console.log("Exchanged github ID for ocean ID:", oceanID);
       res.cookie("OceanID", oceanID, { httpOnly: true });
     })
     .then(function() {
-      console.log("Redirecting");
       res.redirect(302, '/get-started?step=2');
     });
 });
